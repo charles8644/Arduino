@@ -20,6 +20,12 @@ int D4 = 10;
 int pinE = 11;
 int pinF = 12;
 int pinG = 13;
+  float temperature;
+  float humidity;
+  String firstDigit;
+  String SecondDigit;
+  int iTemp;
+  String sTemp;
 
 
 /*
@@ -49,16 +55,14 @@ void setup( )
  */
 static bool measure_environment( float *temperature, float *humidity )
 {
-  static unsigned long measurement_timestamp = millis( );
+  
 
   /* Measure once every four seconds. */
-  if( millis( ) - measurement_timestamp > 3000ul )
-  {
+
     if( dht_sensor.measure( temperature, humidity ) == true )
     {
-      measurement_timestamp = millis( );
+      
       return( true );
-    }
   }
 
   return( false );
@@ -71,12 +75,7 @@ static bool measure_environment( float *temperature, float *humidity )
  */
 void loop( )
 {
-  float temperature;
-  float humidity;
-  String firstDigit;
-  String SecondDigit;
-  int iTemp;
-  String sTemp;
+
   
   /* Measure temperature and humidity.  If the functions returns
      true, then a measurement is available. */
@@ -103,95 +102,88 @@ void loop( )
     
   }
 
-  if (sTemp == "20") 
+  if (firstDigit == "0") 
         {
-          digit2();two();delay(1000);
-          digit3();zero();delay(1000);
-          digit4();degre();delay(1000);
-          turnOffAllSegments();
-   
+          digit2();zero();delay(1);
         }
-    if (sTemp == "21") 
+        if (firstDigit == "1") 
         {
-          digit2();two();delay(1000);
-          digit3();one();delay(1000);
-          digit4();degre();delay(1000);
-          turnOffAllSegments();
-   
+          digit2();one();delay(1);
         }
-          if (sTemp == "22") 
+        if (firstDigit == "2") 
         {
-          digit2();two();delay(1000);
-          digit3();two();delay(1000);
-          digit4();degre();delay(1000);
-          turnOffAllSegments();
-   
+          digit2();two();delay(1);
         }
-          if (sTemp == "23") 
+        if (firstDigit == "3") 
         {
-          digit2();two();delay(1000);
-          digit3();three();delay(1000);
-          digit4();degre();delay(1000);
-          turnOffAllSegments();
-   
+          digit2();three();delay(1);
         }
-          if (sTemp == "24") 
+        if (firstDigit == "4") 
         {
-          
-          digit2();two();delay(1000);
-          digit3();four();delay(1000);
-          digit4();degre();delay(1000);
-          turnOffAllSegments();
-   
+          digit2();four();delay(1);
         }
-          if (sTemp == "25") 
+        if (firstDigit == "5") 
         {
-          digit2();two();delay(1000);
-          digit3();five();delay(1000);
-          digit4();degre();delay(1000);
-          turnOffAllSegments();
-   
+          digit2();five();delay(1);
         }
-          if (sTemp == "25") 
+        if (firstDigit == "6") 
         {
-          digit2();two();delay(1000);
-          digit3();five();delay(1000);
-          digit4();degre();delay(1000);
-          turnOffAllSegments();
-   
+          digit2();six();delay(1);
         }
-          if (sTemp == "26") 
+        if (firstDigit == "7") 
         {
-          digit2();two();delay(1000);
-          digit3();six();delay(1000);
-          digit4();degre();delay(1000);
-          turnOffAllSegments();
-   
+          digit2();seven();delay(1);
         }
-          if (sTemp == "27") 
+        if (firstDigit == "8") 
         {
-          digit2();two();delay(1000);
-          digit3();seven();delay(1000);
-          digit4();degre();delay(1000);
-          turnOffAllSegments();
-   
+          digit2();eight();delay(1);
         }
-          if (sTemp == "28") 
+        if (firstDigit == "9") 
         {
-          digit2();two();delay(1000);
-          digit3();eight();delay(1000);
-          digit4();degre();delay(1000);
-          turnOffAllSegments();
-   
+          digit2();nine();delay(1);
         }
-          if (sTemp == "29") 
+
+        if (SecondDigit == "0") 
         {
-          digit2();two();delay(1000);
-          digit3();nine();delay(1000);
-          digit4();degre();delay(1000);
-          turnOffAllSegments();
-   
+          digit3();zero();delay(1);
         }
+        if (SecondDigit == "1") 
+        {
+          digit3();one();delay(1);
+        }
+        if (SecondDigit == "2") 
+        {
+          digit3();two();delay(1);
+        }
+        if (SecondDigit == "3") 
+        {
+          digit3();three();delay(1);
+        }
+        if (SecondDigit == "4") 
+        {
+          digit3();four();delay(1);
+        }
+        if (SecondDigit == "5") 
+        {
+          digit3();five();delay(1);
+        }
+        if (SecondDigit == "6") 
+        {
+          digit3();six();delay(1);
+        }
+        if (SecondDigit == "7") 
+        {
+          digit3();seven();delay(1);
+        }
+        if (SecondDigit == "8") 
+        {
+          digit3();eight();delay(1);
+        }
+        if (SecondDigit == "9") 
+        {
+          digit3();nine();delay(1);
+        }
+        digit4();degre();delay(1);
 }
 //functions representing numbers 0-9
 void zero(){
@@ -362,3 +354,4 @@ digitalWrite(D2, LOW);
 digitalWrite(D3, LOW);
 digitalWrite(D4, LOW);
         }
+
